@@ -1,5 +1,5 @@
 # dotGraphManipulation
-a simple script to higlight some schedule on dot files representation scheduling state spaces (like the one generated from TimeSquare or Gemoc)
+a simple script to higlight some schedules on dot files representation scheduling state spaces (like the ones generated from TimeSquare or Gemoc Studio)
 
 
     colorizeCycles.py by Julien Deantoni
