@@ -15,3 +15,9 @@ moving the script next to the example and running `./colorizeCycles.py model.tim
     dot -Tpdf result_model.timemodel.dot > result_model.timemodel.pdf
     sfdp -Tpdf result_cleaned_model.timemodel.dot > result_cleaned_model.timemodel.pdf
 ```
+
+note: you can compile this script to pure C by doing:
+```
+    cython-3.6 colorizeCycles.py -o colorizeCycles.c --embed
+    gcc -Os colorizeCycles.c -o colorCycles -I/usr/include/python3.6m/ -lpython3.6m -lpthread -lm -lutil -ldl
+```
