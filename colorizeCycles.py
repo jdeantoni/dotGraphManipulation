@@ -21,15 +21,16 @@ def findCycles(pathToDot):
     print("    enumerating cycles")
     for aCycle in allCycles:
         numberOfCycle = numberOfCycle +1
-        print('.', end="")
+        if (numberOfCycle % 10000 == 0):
+            sys.stdout.write('number of cycle computed: {}'.format(numberOfCycle)+chr(13))
         if (len(aCycle) < 2):
             continue
         if (len(aCycle) < len(shortest)):
             shortest=aCycle
         if (len(aCycle) > len(longest)):
             longest=aCycle
-        if(numberOfCycle > 4000):
-            print("############# number of cycles addressed > 4000, stoping")
+        if(numberOfCycle > 4000000):
+            print("############# number of cycles computed > 4 000 000, stopping at {}".format(4000000))
             break
     return shortest,longest
 
@@ -61,7 +62,7 @@ def replaceAllLinesForStates(initialDot, resultingDotPath, newColor, linesToChan
                     #print("change Done")
                     lineChanged=re.sub("fillcolor=\"#ff0000\"", "fillcolor=\"#ff00ff\"", line)
                     lineChanged=re.sub("fillcolor=\"#0000ff\"", "fillcolor=\"#ff00ff\"", line)
-                    lineChanged=re.sub("fillcolor=\"#ffffff\"", "fillcolor=\""+str(newcolor)+"\"", line)
+                    lineChanged=re.sub("fillcolor=\"#ffffff\"", "fillcolor=\""+str(newColor)+"\"", line)
                     lineChanged=re.sub(r"label=\".*", "label=\"\"];", lineChanged)
                     res.write(lineChanged)
                 else:
@@ -124,7 +125,7 @@ def printSchedule(scheduleLines):
     for line in scheduleLines:
         lineChanged=re.sub(r".*label=\"\[", "", line)
         lineChanged=re.sub(r"\]\"];", "", lineChanged)
-        print(lineChanged, end="")
+        #print(lineChanged, end="")
 
 
 def dotCleanup(dotSource, dotCleaned):
